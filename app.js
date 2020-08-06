@@ -3,19 +3,19 @@ const col = document.querySelector('.col');
 const bookForm = document.querySelector('.book-form'); 
 let myLibrary = [
 	{
-		title: '1',
+		title: 'first',
 		author: '2',
 		pages: '3',
 		read: '4',
 	},
 	{
-		title: '1',
+		title: 'second',
 		author: '2',
 		pages: '3',
 		read: '4',
 	},
 	{
-		title: '1',
+		title: 'third',
 		author: '2',
 		pages: '3',
 		read: '4',
@@ -39,7 +39,8 @@ function render() {
       <p>${book.title}</p>
       <p>${book.author}</p>
       <p>${book.pages}</p>
-      <p>${book.read}</p>
+			<p>${book.read}</p>
+			<span class="remove-btn">REMOVE</span>
     </div>`;
 	});
 }
@@ -51,7 +52,6 @@ const books = document.querySelectorAll('.book');
 function addEventListeners() {
 	Array.from(books).forEach((book) => {
 		book.addEventListener('click', function(e) {
-			console.log(e);
 		});
 	});
 }
@@ -60,4 +60,16 @@ addEventListeners()
 
 col.addEventListener("click",function(){
 	bookForm.style.display = "block";
+})
+
+const removeBtns = document.querySelectorAll('.remove-btn')
+
+Array.from(removeBtns).forEach((btn) => {
+	btn.addEventListener('click', function(e) {
+		let book = e.target.parentElement
+	
+		console.log(book);
+		myLibrary.splice(book.id, 1)
+		container.removeChild(book)
+	})
 })
