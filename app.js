@@ -1,4 +1,6 @@
 const container = document.querySelector('.container');
+const col = document.querySelector('.col');
+const bookForm = document.querySelector('.book-form'); 
 let myLibrary = [
 	{
 		title: '1',
@@ -32,8 +34,8 @@ function addBookToLibrary(book) {
 }
 
 function render() {
-	myLibrary.forEach((book) => {
-		container.innerHTML += `<div class="book">
+	myLibrary.forEach((book, i) => {
+		container.innerHTML += `<div class="book" id="${i}">
       <p>${book.title}</p>
       <p>${book.author}</p>
       <p>${book.pages}</p>
@@ -55,3 +57,7 @@ function addEventListeners() {
 }
 
 addEventListeners()
+
+col.addEventListener("click",function(){
+	bookForm.style.display = "block";
+})
