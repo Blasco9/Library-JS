@@ -6,5 +6,19 @@
 }
 
 .book-form {
-	display: none;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  margin: 0 auto;
+  padding: 1rem 2rem;
+}
+
+.book-form input {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.d-none {
+  display: none;
 }
