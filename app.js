@@ -11,39 +11,33 @@ function Book(title, author, pages, read) {
 }
 
 Book.prototype.toggleReadStatus = function() {
-	let readStatus = this.read;
-	this.read = !readStatus;
-	console.log(this);
+	this.read = !this.read;
 }
 
 function addBookToLibrary(book) {
 	myLibrary.push(book);
-
-	container.innerHTML += `<div id="${myLibrary.length}" class="book">
-														<p>${book.title}</p>
-														<p>${book.author}</p>
-														<p>${book.pages}</p>
-														<input type="checkbox" onchange="changeReadStatus(this.parentElement)">
-														<span class="remove-btn" onclick="removeBook(this)">REMOVE</span>
-													</div>`;
+	container.innerHTML += createBook(book);
 }
 
 function render() {
 	myLibrary.forEach((book) => {
-		container.innerHTML += `<div id="${myLibrary.length}" class="book"">
-    												  <p>${book.title}</p>
-    												  <p>${book.author}</p>
-    												  <p>${book.pages}</p>
-															<input type="checkbox" onchange="changeReadStatus(this.parentElement)">
-															<span class="remove-btn" onclick="removeBook(this)">REMOVE</span>
-														</div>`;
+		container.innerHTML += createBook(book);
 	});
 }
 
-function removeBook(btn) {
-	let bookToRemove = btn.parentElement;
-	myLibrary.splice(bookToRemove.id, 1);
-	container.removeChild(bookToRemove);
+function createBook(book) {
+	return `<div id="${myLibrary.length}" class="book"">
+						<p>${book.title}</p>
+						<p>${book.author}</p>
+						<p>${book.pages}</p>
+						<input type="checkbox" onchange="changeReadStatus(this.parentElement)">
+						<span class="remove-btn" onclick="removeBook(this.parentElement)">REMOVE</span>
+					</div>`
+}
+
+function removeBook(bookElement) {
+	myLibrary.splice(bookElement.id, 1);
+	container.removeChild(bookElement);
 }
 
 function changeReadStatus(bookElement) {
