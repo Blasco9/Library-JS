@@ -1,7 +1,7 @@
 const container = document.querySelector('.container');
 const newBookBtn = document.querySelector('.new-book-btn');
 const bookForm = document.querySelector('.book-form');
-let myLibrary = [];
+let myLibrary = getLibrary() || [];
 
 function Book(title, author, pages, read) {
 	this.title = title;
@@ -16,6 +16,7 @@ Book.prototype.toggleReadStatus = function() {
 
 function addBookToLibrary(book) {
 	myLibrary.push(book);
+	storage();
 	container.innerHTML += createBook(book);
 }
 
@@ -45,6 +46,14 @@ function changeReadStatus(bookElement) {
 	book.toggleReadStatus()
 }
 
+function storage() {
+	localStorage.setItem('library', JSON.stringify(myLibrary));
+}
+
+function getLibrary() {
+	return JSON.parse(localStorage.getItem('library'));
+}
+
 newBookBtn.addEventListener('click', function () {
 	bookForm.classList.remove('d-none');
 });
@@ -59,3 +68,5 @@ document.querySelector('.create-book-btn').addEventListener('click', function ()
 });
 
 render();
+getLibrary();
+console.log(getLibrary());
