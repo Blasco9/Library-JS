@@ -17,7 +17,7 @@ function addBookToLibrary(book) {
 														<p>${book.title}</p>
 														<p>${book.author}</p>
 														<p>${book.pages}</p>
-														<p>${book.read}</p>
+														<input type="checkbox" onchange="changeReadStatus(this)">
 														<span class="remove-btn" onclick="removeBook(this)">REMOVE</span>
 													</div>`;
 }
@@ -28,7 +28,7 @@ function render() {
     												  <p>${book.title}</p>
     												  <p>${book.author}</p>
     												  <p>${book.pages}</p>
-															<p>${book.read}</p>
+															<input type="checkbox" onchange="changeReadStatus(this)">
 															<span class="remove-btn" onclick="removeBook(this)">REMOVE</span>
 														</div>`;
 	});
@@ -38,6 +38,12 @@ function removeBook(btn) {
 	let bookToRemove = btn.parentElement;
 	myLibrary.splice(bookToRemove.id, 1);
 	container.removeChild(bookToRemove);
+}
+
+function changeReadStatus(checkbox) {
+	let bookRead = checkbox.parentElement;
+	let readStatus = myLibrary[bookRead.id -1].read;
+	myLibrary[bookRead.id -1].read = !readStatus;
 }
 
 newBookBtn.addEventListener('click', function () {
