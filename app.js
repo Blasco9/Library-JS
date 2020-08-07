@@ -46,6 +46,8 @@ function changeReadStatus(checkbox) {
 	myLibrary[bookRead.id -1].read = !readStatus;
 }
 
+Book.prototype.changeReadStatus = 
+
 newBookBtn.addEventListener('click', function () {
 	bookForm.classList.remove('d-none');
 });
