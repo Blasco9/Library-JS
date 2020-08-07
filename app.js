@@ -10,6 +10,12 @@ function Book(title, author, pages, read) {
 	this.read = read;
 }
 
+Book.prototype.toggleReadStatus = function() {
+	let readStatus = this.read;
+	this.read = !readStatus;
+	console.log(this);
+}
+
 function addBookToLibrary(book) {
 	myLibrary.push(book);
 
@@ -17,7 +23,7 @@ function addBookToLibrary(book) {
 														<p>${book.title}</p>
 														<p>${book.author}</p>
 														<p>${book.pages}</p>
-														<input type="checkbox" onchange="changeReadStatus(this)">
+														<input type="checkbox" onchange="changeReadStatus(this.parentElement)">
 														<span class="remove-btn" onclick="removeBook(this)">REMOVE</span>
 													</div>`;
 }
@@ -28,7 +34,7 @@ function render() {
     												  <p>${book.title}</p>
     												  <p>${book.author}</p>
     												  <p>${book.pages}</p>
-															<input type="checkbox" onchange="changeReadStatus(this)">
+															<input type="checkbox" onchange="changeReadStatus(this.parentElement)">
 															<span class="remove-btn" onclick="removeBook(this)">REMOVE</span>
 														</div>`;
 	});
@@ -40,25 +46,21 @@ function removeBook(btn) {
 	container.removeChild(bookToRemove);
 }
 
-function changeReadStatus(checkbox) {
-	let bookRead = checkbox.parentElement;
-	let readStatus = myLibrary[bookRead.id -1].read;
-	myLibrary[bookRead.id -1].read = !readStatus;
+function changeReadStatus(bookElement) {
+	let book = myLibrary[bookElement.id - 1]
+	book.toggleReadStatus()
 }
-
-Book.prototype.changeReadStatus = 
 
 newBookBtn.addEventListener('click', function () {
 	bookForm.classList.remove('d-none');
 });
 
 document.querySelector('.create-book-btn').addEventListener('click', function () {
-	let book = {
-		title: bookForm.children[0].value,
-		author: bookForm.children[1].value,
-		pages: bookForm.children[2].value,
-		read: bookForm.children[3].value,
-	};
+	let title = bookForm.children[0].value
+	let author = bookForm.children[1].value
+	let pages = bookForm.children[2].value
+	let read = bookForm.children[3].value
+	let book = new Book(title, author, pages, read)
 	addBookToLibrary(book);
 });
 
