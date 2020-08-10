@@ -3,6 +3,10 @@ const newBookBtn = document.querySelector('.new-book-btn');
 const bookForm = document.querySelector('.book-form');
 const createBookBtn = document.querySelector('.create-book-btn');
 const modal = document.querySelector('.modal');
+const title = document.querySelector('.book-title');
+const author = document.querySelector('.book-author');
+const pages = document.querySelector('.book-pages');
+const read = document.querySelector('.book-read');
 let myLibrary = getLibrary();
 
 function Book(title, author, pages, read) {
@@ -17,12 +21,14 @@ Book.prototype.toggleReadStatus = function () {
 };
 
 function newBook() {
-	let title = document.querySelector('.book-title').value;
-	let author = document.querySelector('.book-author').value;
-	let pages = document.querySelector('.book-pages').value;
-	let read = document.querySelector('.book-read').checked;
-	let book = new Book(title, author, pages, read);
+	let titleValue = title.value;
+	let authorValue = author.value;
+	let pagesValue = pages.value;
+	let readValue = read.checked;
+	let book = new Book(titleValue, authorValue, pagesValue, readValue);
 	addBookToLibrary(book);
+	cleanFormFields();
+	modal.classList.remove('open');
 }
 
 function createBook(book, id) {
@@ -55,6 +61,17 @@ function changeReadStatus(bookElement) {
 	let book = myLibrary[bookElement.parentElement.id];
 	book.toggleReadStatus();
 	storeLibrary();
+}
+
+function cleanFormFields() {
+	title.value = '';
+	author.value = '';
+	pages.value = '';
+	read.checked = false;
+}
+
+function toggleModal() {
+	
 }
 
 function render() {
