@@ -1,29 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Document</title>
-</head>
-<body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container"></div>
 
-  <div class="container">
+		<button class="new-book-btn">
+			new book
+		</button>
 
-  </div>
+		<div class="modal">
+			<form class="book-form">
+				<input name="title" type="text" />
+				<input name="author" type="text" />
+				<input name="pages" type="text" />
+				<input type="checkbox" name="read" />
+				<span class="create-book-btn">Create</span>
+			</form>
+		</div>
 
-  <button class="new-book-btn">
-  	new book
-  </button>
-
-  <form class="book-form d-none">
-  	<input name="title" type="text">
-  	<input name="author" type="text">
-  	<input name="pages" type="text">
-    <input type="checkbox" name="read">
-    <span class="create-book-btn">Create</span>
-  </form>
-
-  <script src="app.js"></script>
-</body>
+		<script src="app.js"></script>
+	</body>
 </html>
