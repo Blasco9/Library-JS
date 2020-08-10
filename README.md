@@ -1,57 +1,33 @@
-# Project Name
+# Book-Library-JS
 
-> One paragraph statement about the project.
+> This allows one to store records on the title, author and page of the book read by a particular person.
 
 ![screenshot](./app_screenshot.png)
 
-Additional description about the project and its features.
+One can add and remove a new book. Also can change the read status of the book.
 
 ## Built With
 
-- Major languages,
-- frameworks,
-- technologies used
+- Javascript,
+- CSS
 
 ## Live Demo
 
 [Live Demo Link](https://livedemo.com)
 
-
-## Getting Started
-
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
-To get a local copy up and running follow these simple example steps.
-
-### Prerequisites
-
-### Setup
-
-### Install
-
-### Usage
-
-### Run tests
-
-### Deployment
-
-
-
 ## Authors
 
-👤 **Author1**
+👤 Julian Blasco
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@githubhandle](https://github.com/Blasco9 )
+- Twitter: [@twitterhandle](https://twitter.com/julianblasco9)
+- Linkedin: [linkedin](https://www.linkedin.com/in/julian-blasco/ )
 
-👤 **Author2**
+👤 Asha Abdullahi
 
-- Github: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- Linkedin: [linkedin](https://linkedin.com/linkedinhandle)
+- Github: [@githubhandle](https://github.com/Ashah15)
+- Twitter: [@twitterhandle](https://twitter.com/AshaAbdullahi13)
+- Linkedin: [linkedin](https://www.linkedin.com/in/ashaabdullahi/)
 
 ## 🤝 Contributing
 
