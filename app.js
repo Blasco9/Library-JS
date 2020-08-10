@@ -17,10 +17,10 @@ Book.prototype.toggleReadStatus = function () {
 };
 
 function newBook() {
-	let title = bookForm.children[0].value;
-	let author = bookForm.children[1].value;
-	let pages = bookForm.children[2].value;
-	let read = bookForm.children[3].checked;
+	let title = document.querySelector('.book-title').value;
+	let author = document.querySelector('.book-author').value;
+	let pages = document.querySelector('.book-pages').value;
+	let read = document.querySelector('.book-read').checked;
 	let book = new Book(title, author, pages, read);
 	addBookToLibrary(book);
 }
@@ -30,7 +30,10 @@ function createBook(book, id) {
 						<p>${book.title}</p>
 						<p>${book.author}</p>
 						<p>${book.pages}</p>
-						<input type="checkbox" ${book.read ? 'checked' : ''} onchange="changeReadStatus(this.parentElement)">
+						<div class="read">
+							<span>read status:</span>
+							<input type="checkbox" ${book.read ? 'checked' : ''} onchange="changeReadStatus(this.parentElement)">
+						</div>
 						<span class="remove-btn" onclick="removeBook(this.parentElement)">REMOVE</span>
 					</div>`;
 }
@@ -49,7 +52,7 @@ function removeBook(bookElement) {
 }
 
 function changeReadStatus(bookElement) {
-	let book = myLibrary[bookElement.id];
+	let book = myLibrary[bookElement.parentElement.id];
 	book.toggleReadStatus();
 	storeLibrary();
 }
@@ -84,8 +87,8 @@ function addEventsListeners() {
 	});
 	createBookBtn.addEventListener('click', newBook);
 	modal.addEventListener('click', (e) => {
-		if(e.target.classList.contains('modal')) {
-			modal.classList.remove('open')
+		if (e.target.classList.contains('modal')) {
+			modal.classList.remove('open');
 		}
 	});
 }

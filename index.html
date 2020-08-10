@@ -11,19 +11,24 @@
 
 		<div class="modal">
 			<form class="book-form">
-				<input name="title" type="text" />
-				<input name="author" type="text" />
-				<input name="pages" type="text" />
-				<input type="checkbox" name="read" />
+        <label for="title">Title</label>
+        <input class="book-title" name="title" type="text" />
+        <label for="author">Author</label>
+        <input class="book-author" name="author" type="text" />
+        <label for="pages">Pages</label>
+        <input class="book-pages" name="pages" type="number" />
+        <div class="read-label-input">
+          <label for="read">Have you read this book?</label>
+          <input class="book-read" type="checkbox" name="read" />
+        </div>
 				<span class="create-book-btn">Create</span>
 			</form>
 		</div>
 
-   <button class="new-book-btn">
-  	new book
-  </button>
+		<button class="new-book-btn">
+			new book
+		</button>
 
-  <script src="app.js"></script>
-</body>
+		<script src="app.js"></script>
+	</body>
 </html>
-
