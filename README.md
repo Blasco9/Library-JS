@@ -2,7 +2,7 @@
 
 > This allows one to store records on the title, author and page of the book read by a particular person.
 
-![screenshot](./app_screenshot.png)
+![library-js](https://user-images.githubusercontent.com/25789605/89838990-5744ba80-db75-11ea-96bd-f6e99724808a.png)
 
 One can add and remove a new book. Also can change the read status of the book.
 
