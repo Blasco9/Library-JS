@@ -2,6 +2,7 @@ const container = document.querySelector('.container');
 const newBookBtn = document.querySelector('.new-book-btn');
 const bookForm = document.querySelector('.book-form');
 const createBookBtn = document.querySelector('.create-book-btn');
+const modal = document.querySelector('.modal');
 let myLibrary = getLibrary();
 
 function Book(title, author, pages, read) {
@@ -79,9 +80,14 @@ function getLibrary() {
 
 function addEventsListeners() {
 	newBookBtn.addEventListener('click', () => {
-		bookForm.classList.toggle('d-none');
+		modal.classList.add('open');
 	});
 	createBookBtn.addEventListener('click', newBook);
+	modal.addEventListener('click', (e) => {
+		if(e.target.classList.contains('modal')) {
+			modal.classList.remove('open')
+		}
+	});
 }
 
 render();
