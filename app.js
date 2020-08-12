@@ -19,34 +19,6 @@ Book.prototype.toggleReadStatus = function () { // eslint-disable-line func-name
   this.read = !this.read;
 };
 
-
-function validateForm() {
-  if (pages.value < 0){
-    throw "Can't have negative pages"
-  } else if(title.value == "") {
-     throw "Title can't be blank"
-  } else if (author.value == "") {
-    throw "Author can't be blank"
-  }
-
-}
-
-function newBook() {
-  try {
-  	validateForm() 
-  } catch(e) {
-  	console.log(e)
-  	return
-   }  
-  const titleValue = title.value;
-  const authorValue = author.value;
-  const pagesValue = pages.value;
-  const readValue = read.checked;
-  const book = new Book(titleValue, authorValue, pagesValue, readValue);
-  addBookToLibrary(book);
-  cleanFormFields();
-  modal.classList.remove('open');
-
 function getLibrary() {
   const library = JSON.parse(localStorage.getItem('library')) || [];
 
@@ -59,6 +31,25 @@ function getLibrary() {
 
 function storeLibrary() {
   localStorage.setItem('library', JSON.stringify(myLibrary));
+}
+
+function validateForm() {
+  const errors = [];
+
+  if (pages.value === '' || pages.value < 0) {
+    errors.push(pages);
+  }
+  if (title.value === '') {
+    errors.push(title);
+  }
+  if (author.value === '') {
+    errors.push(author);
+  }
+
+  if (errors.length === 0) {
+    return true;
+  }
+  return errors;
 }
 
 function cleanFormFields() {
@@ -98,14 +89,23 @@ function addBookToLibrary(book) {
 }
 
 function newBook() {
-  const titleValue = title.value;
-  const authorValue = author.value;
-  const pagesValue = pages.value;
-  const readValue = read.checked;
-  const book = new Book(titleValue, authorValue, pagesValue, readValue);
-  addBookToLibrary(book);
-  cleanFormFields();
-  modal.classList.remove('open');
+  const valid = validateForm();
+
+  if (valid === true) {
+    const titleValue = title.value;
+    const authorValue = author.value;
+    const pagesValue = pages.value;
+    const readValue = read.checked;
+    const book = new Book(titleValue, authorValue, pagesValue, readValue);
+    addBookToLibrary(book);
+    cleanFormFields();
+    modal.classList.remove('open');
+  } else {
+    valid.forEach((error) => {
+      const errorDescription = `<p class="form-error">There is an error in ${error.name}</p>`;
+      error.insertAdjacentHTML('afterend', errorDescription);
+    });
+  }
 }
 
 function removeBook(bookElement) { // eslint-disable-line no-unused-vars

@@ -106,3 +106,7 @@
   align-items: center;
   justify-content: center;
 }
+
+.form-error {
+  color: red;
+}
