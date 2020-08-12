@@ -6,7 +6,7 @@ const title = document.querySelector('.book-title');
 const author = document.querySelector('.book-author');
 const pages = document.querySelector('.book-pages');
 const read = document.querySelector('.book-read');
-const myLibrary = getLibrary();
+let myLibrary = [];
 
 function Book(title, author, pages, read) {
   this.title = title;
@@ -15,9 +15,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
-Book.prototype.toggleReadStatus = function () {
+Book.prototype.toggleReadStatus = function () { // eslint-disable-line func-names
   this.read = !this.read;
 };
+
 
 function validateForm() {
   if (pages.value < 0){
@@ -45,6 +46,26 @@ function newBook() {
   addBookToLibrary(book);
   cleanFormFields();
   modal.classList.remove('open');
+
+function getLibrary() {
+  const library = JSON.parse(localStorage.getItem('library')) || [];
+
+  library.forEach((book, i) => {
+    library.splice(i, 1, new Book(book.title, book.author, book.pages, book.read));
+  });
+
+  return library;
+}
+
+function storeLibrary() {
+  localStorage.setItem('library', JSON.stringify(myLibrary));
+}
+
+function cleanFormFields() {
+  title.value = '';
+  author.value = '';
+  pages.value = '';
+  read.checked = false;
 }
 
 function createBook(book, id) {
@@ -60,32 +81,6 @@ function createBook(book, id) {
 </div>`;
 }
 
-function addBookToLibrary(book) {
-  myLibrary.push(book);
-  storeLibrary();
-  render();
-}
-
-function removeBook(bookElement) {
-  myLibrary.splice(bookElement.id, 1);
-  container.removeChild(bookElement);
-  storeLibrary();
-  render();
-}
-
-function changeReadStatus(bookElement) {
-  const book = myLibrary[bookElement.parentElement.id];
-  book.toggleReadStatus();
-  storeLibrary();
-}
-
-function cleanFormFields() {
-  title.value = '';
-  author.value = '';
-  pages.value = '';
-  read.checked = false;
-}
-
 function render() {
   let id = 0;
   container.innerHTML = '';
@@ -96,18 +91,34 @@ function render() {
   });
 }
 
-function storeLibrary() {
-  localStorage.setItem('library', JSON.stringify(myLibrary));
+function addBookToLibrary(book) {
+  myLibrary.push(book);
+  storeLibrary();
+  render();
 }
 
-function getLibrary() {
-  const library = JSON.parse(localStorage.getItem('library')) || [];
+function newBook() {
+  const titleValue = title.value;
+  const authorValue = author.value;
+  const pagesValue = pages.value;
+  const readValue = read.checked;
+  const book = new Book(titleValue, authorValue, pagesValue, readValue);
+  addBookToLibrary(book);
+  cleanFormFields();
+  modal.classList.remove('open');
+}
 
-  library.forEach((book, i) => {
-    library.splice(i, 1, new Book(book.title, book.author, book.pages, book.read));
-  });
+function removeBook(bookElement) { // eslint-disable-line no-unused-vars
+  myLibrary.splice(bookElement.id, 1);
+  container.removeChild(bookElement);
+  storeLibrary();
+  render();
+}
 
-  return library;
+function changeReadStatus(bookElement) { // eslint-disable-line no-unused-vars
+  const book = myLibrary[bookElement.parentElement.id];
+  book.toggleReadStatus();
+  storeLibrary();
 }
 
 function addEventsListeners() {
@@ -122,5 +133,8 @@ function addEventsListeners() {
   });
 }
 
-render();
-addEventsListeners();
+window.onload = () => {
+  myLibrary = getLibrary();
+  render();
+  addEventsListeners();
+};
