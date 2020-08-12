@@ -13,21 +13,21 @@ One can add and remove a new book. Also can change the read status of the book.
 
 ## Live Demo
 
-[Live Demo Link](https://livedemo.com)
+[Live Demo Link](https://rawcdn.githack.com/Blasco9/Library-JS/1154efbc7dfa0827e3812b2d545e0c0763304249/index.html)
 
 ## Authors
 
 👤 Julian Blasco
 
-- Github: [@githubhandle](https://github.com/Blasco9 )
-- Twitter: [@twitterhandle](https://twitter.com/julianblasco9)
-- Linkedin: [linkedin](https://www.linkedin.com/in/julian-blasco/ )
+- Github: [@Blasco9](https://github.com/Blasco9 )
+- Twitter: [@julianblasco9](https://twitter.com/julianblasco9)
+- Linkedin: [Julian Blasco](https://www.linkedin.com/in/julian-blasco/ )
 
 👤 Asha Abdullahi
 
-- Github: [@githubhandle](https://github.com/Ashah15)
-- Twitter: [@twitterhandle](https://twitter.com/AshaAbdullahi13)
-- Linkedin: [linkedin](https://www.linkedin.com/in/ashaabdullahi/)
+- Github: [@Ashah15](https://github.com/Ashah15)
+- Twitter: [@AshaAbdullahi13](https://twitter.com/AshaAbdullahi13)
+- Linkedin: [Asha Abdullahi](https://www.linkedin.com/in/ashaabdullahi/)
 
 ## 🤝 Contributing
 
