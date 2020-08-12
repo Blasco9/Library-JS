@@ -19,7 +19,24 @@ Book.prototype.toggleReadStatus = function () {
   this.read = !this.read;
 };
 
+function validateForm() {
+  if (pages.value < 0){
+    throw "Can't have negative pages"
+  } else if(title.value == "") {
+     throw "Title can't be blank"
+  } else if (author.value == "") {
+    throw "Author can't be blank"
+  }
+
+}
+
 function newBook() {
+  try {
+  	validateForm() 
+  } catch(e) {
+  	console.log(e)
+  	return
+   }  
   const titleValue = title.value;
   const authorValue = author.value;
   const pagesValue = pages.value;
