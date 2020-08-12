@@ -61,9 +61,18 @@ function cleanFormFields() {
 
 function createBook(book, id) {
   return `<div id="${id}" class="book"">
+  <div>
+  <span>Title: </span>
   <p>${book.title}</p>
+  </div>
+  <div>
+  <span>Author: </span>
   <p>${book.author}</p>
+  </div>
+  <div>
+  <span>Pages: </span>
   <p>${book.pages}</p>
+  </div>
   <div class="read">
     <span>read status:</span>
     <input type="checkbox" ${book.read ? 'checked' : ''} onchange="changeReadStatus(this.parentElement)">

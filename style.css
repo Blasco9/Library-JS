@@ -99,9 +99,10 @@
 
 .book p {
   font-weight: 700;
+  margin-left: 8px;
 }
 
-.book .read {
+.book div {
   display: flex;
   align-items: center;
   justify-content: center;
