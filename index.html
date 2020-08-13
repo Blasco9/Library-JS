@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<title>Document</title>
+	</head>
+	<body>
+		<div class="container"></div>
+
+		<div class="modal">
+			<form class="book-form">
+        <label for="title">Title</label>
+        <input class="book-title" name="title" type="text" />
+        <label for="author">Author</label>
+        <input class="book-author" name="author" type="text" />
+        <label for="pages">Pages</label>
+        <input class="book-pages" name="pages" type="number" />
+        <div class="read-label-input">
+          <label for="read">Have you read this book?</label>
+          <input class="book-read" type="checkbox" name="read" />
+        </div>
+				<span class="create-book-btn">Create</span>
+			</form>
+		</div>
+
+		<button class="new-book-btn">
+			new book
+		</button>
+
+		<script src="app.js"></script>
+	</body>
+</html>
